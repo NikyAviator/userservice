@@ -10,8 +10,12 @@ import ppc.userservice.repo.RoleRepo;
 import ppc.userservice.repo.UserRepo;
 
 import java.util.List;
-@Service @RequiredArgsConstructor @Transactional @Slf4j
+@Service
+@RequiredArgsConstructor
+@Transactional
+@Slf4j
 public class UserServiceImplementation implements UserService{
+    // These are communicating with JPA directly: User and Role
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
 
@@ -26,17 +30,19 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public void addRoleToUser(String username, Role roleName) {
-
+    public void addRoleToUser(String username, String roleName) {
+        User user = userRepo.findByUsername(username);
+        Role role = roleRepo.findByName(roleName);
+        user.getRoles().add(role);
     }
 
     @Override
     public User getUser(String username) {
-        return null;
+        return userRepo.findByUsername(username);
     }
 
     @Override
     public List<User> getUsers() {
-        return null;
+        return userRepo.findAll();
     }
 }
