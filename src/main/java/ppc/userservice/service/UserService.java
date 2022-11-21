@@ -1,11 +1,12 @@
 package ppc.userservice.service;
 
+import org.springframework.stereotype.Service;
 import ppc.userservice.domain.Role;
 import ppc.userservice.domain.User;
 
 import java.util.List;
 
-
+@Service
 public interface UserService {
 
     User saveUser(User user);
