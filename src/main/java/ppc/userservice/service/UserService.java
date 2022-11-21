@@ -6,7 +6,7 @@ import ppc.userservice.domain.User;
 
 import java.util.List;
 
-@Service
+
 public interface UserService {
 
     User saveUser(User user);
